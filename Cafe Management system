@@ -1,0 +1,664 @@
+
+MAIN
+package project;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Start s=new Start();
+		s.info(); //info of project
+	}
+
+}
+
+CLASS START
+package project;
+
+import java.util.Scanner;
+
+public class Start
+{
+	protected String name; //customer name
+	public void info() //information function
+	{
+	Scanner myObj = new Scanner(System.in);
+	System.out.println("\t\t\t----------*CAFETERIA ORDER MANAGEMENT SYSTEM*-----------\n\n");
+	System.out.println("\t\t\t-----------------*GROUP MEMBERS*--------------\n\n");
+	System.out.println("\t\t\t------------*NOOR-UL-AIN MUMTAZ (21)*-----------\n\n");
+	System.out.println("\t\t\t--------------*ZUNAIRA ZAFAR (035)*-----------\n\n");
+	System.out.println("\t\t\t----------------*ANAM BIBI (007)*-----------\n\n");
+	Order or=new Order();
+	or.orrder();
+	}
+	};
+
+CLASS ORDER
+package project;
+
+import java.util.Scanner;
+
+public class Order extends Start
+{
+protected String gotostart; //for option
+int choice,pchoice,pchoice1, quantity; //for item choice and quantity
+public void orrder() //taking order
+{
+	Scanner myObj = new Scanner(System.in);
+choice=0;
+System.out.println("Hello     \n\nWhat would you like to order?\n\n");
+System.out.println("\t\t\t\t--------Menu--------\n\n");
+System.out.println("1) Pizzas\n");
+System.out.println("2) Burgers\n");
+System.out.println("3) Sandwich\n");
+System.out.println("4) Rolls\n");
+System.out.println("5) Biryani\n\n");
+System.out.println("\nPlease Enter your Choice: ");
+choice= myObj.nextInt(); // input items
+if(choice==1) //if condition for first choice of item(pizza)
+{
+	Pizza p=new Pizza(); //object declaration of pizza class
+	p.pizza();
+	
+}
+else if(choice==2) //else if for 2nd choice of item(burger)
+{
+	Burger b=new Burger(); //object declaration of burger class
+	b.burger();
+}
+else if(choice==3) //else if for 3rd choice of item(sandwich)
+{
+	Sandwich s=new Sandwich(); //object declaration of sandwich class
+	s.sandwich();
+}
+else if(choice==4) //else if for 4th choice of item(roll)
+{
+	Rolls r=new Rolls(); //object declaration of roll class
+	r.rolls();
+}
+else if(choice==5) //else statement for fifth choice(biryani)
+{
+	Biryani bir=new Biryani(); //object declaration of biryani class
+	bir.biryani();
+}
+else
+{
+//system("CLS");
+	System.out.println("Please Select Right Option: \n"); 
+	System.out.println("Would you like to order anything else? Y / N: \n 1 for yes \n 0 for no");
+	int gotostart= myObj.nextInt(); //get value either you want to order again or not
+	if(gotostart==1) //this condition for if you want to order again
+	{
+		Order o=new Order();
+	 o.orrder(); //cursor will reach on starting point
+	}
+		System.out.println("THANKS FOR ORDERING!"); //if you don't want to order
+}
+}
+}
+CLASS PIZZA
+package project;
+
+import java.util.Scanner;
+
+public class Pizza extends Order
+{
+	protected String name; //customer name
+	 int gotostart; //for option
+	int choice,pchoice,pchoice1, quantity; //for item choice and quantity
+	public void pizza()
+	{
+	Scanner myObj = new Scanner(System.in);
+		System.out.println("Please Enter Your Name: ");
+		name= myObj.nextLine(); //input name of customer
+	choice=0;
+		System.out.println("\n1) Chicken Fazita\n");
+		System.out.println("2) Chicken Bar BQ\n");
+		System.out.println("3) Peri Peri\n");
+		System.out.println("4) Creamy Max\n");
+		System.out.println("\nPlease Enter which Flavour would you like to have?:");
+		pchoice= myObj.nextInt(); //selection of flavor
+	if(pchoice>=1 && pchoice<=5) //if condition use for choice material or item size
+	{
+		System.out.println("\n1) Small Rs.250\n2) Regular Rs.500\n3) Large Rs.900\n");
+		System.out.println("\nChoose Size Please:");
+		pchoice1= myObj.nextInt(); //selection of size
+	if(pchoice1>=1 && pchoice1<=3) //if condition for choosing quantity
+		System.out.println("\nPlease Enter Quantity: ");
+	quantity= myObj.nextInt(); //selection of quantity
+	switch(pchoice1) //switch statement for choice of different quantity
+	{
+	case 1: choice = 250*quantity;
+	break;
+	case 2: choice = 500*quantity;
+	break;
+	case 3: choice = 900*quantity;
+	break;
+
+	}
+	switch (pchoice1) //switch for display the selected items
+	{
+	case 1:
+		System.out.println("\t\t\t--------Your Order---------\n");
+		System.out.println("NAME : "+name+"\n");
+		System.out.println(""+quantity+" chicken fazita\n");
+		System.out.println("\nYour Total Bill is"+choice+"\nYour Order Will be delivered in 10 Minutes\n");
+		System.out.println("\n\nThank you For Ordering \n");
+	break;
+	case 2:
+		System.out.println("\t\t--------Your Order---------\n");
+		System.out.println("NAME : "+name+"\n");
+		System.out.println(""+quantity+" chicken Bar BQ\n");
+		System.out.println("\nYour Total Bill is "+choice+"\nYour Order Will be delivered in 10 Minutes\n");
+		System.out.println("\nThank you For Ordering \n");
+	break;
+	case 3:
+		System.out.println("\t\t--------Your Order---------\n");
+		System.out.println("NAME : "+name+"\n");
+		System.out.println(""+quantity+" peeri peeri\n");
+		System.out.println("\nYour Total Bill is"+choice+"\nYour Order Will be delivered in 10 Minutes\n");
+		System.out.println("\nThank you For Ordering \n");
+	break;
+	case 4:
+		System.out.println("\t\t--------Your Order---------\n");
+		System.out.println("NAME : "+name+"\n");
+		System.out.println(""+quantity+" creamy mix\n");
+		System.out.println("\nYour Total Bill is"+choice+"\nYour Order Will be delivered in 10 Minutes\n");
+		System.out.println("\nThank you For Ordering \n");
+	break;
+	}
+	}
+	System.out.println("Would you like to order anything else? Y / N: \n 1 for yes \n 0 for no");
+	gotostart= myObj.nextInt(); 
+	if(gotostart==1) 
+	{
+		Order o=new Order();
+	 o.orrder(); 
+	}
+		System.out.println("THANKS FOR ORDERING!");
+}
+	}
+
+CLASS BURGER
+package project;
+
+import java.util.Scanner;
+
+public class Burger extends Order 
+{
+	protected String name; //customer name
+	int gotostart; //for option
+	int choice,pchoice,pchoice1, quantity; //for item choice and quantity
+public void burger()
+{
+	Scanner myObj = new Scanner(System.in);
+		System.out.println("Please Enter Your Name: ");
+		name= myObj.nextLine(); //input name of customer
+	choice=0;
+	System.out.println("\n1 zinger burger Rs.180\n\n");
+	System.out.println("2 chicken burger Rs.150\n\n");
+	System.out.println("3 beef burger Rs.160\n\n");
+	System.out.println("\nPlease Enter which Burger you would like to have?: ");
+	pchoice1= myObj.nextInt(); //selection of flavor
+
+if(pchoice1>=1 && pchoice1<=3) //if condition use for choose material or item size
+{
+	System.out.println("\nPlease Enter Quantity: ");
+	quantity= myObj.nextInt(); //selection of quantity
+switch(pchoice1) //switch statement for choice of different quantity
+{
+case 1: choice = 180*quantity;
+break;
+case 2: choice = 150*quantity;
+break;
+case 3: choice = 160*quantity;
+break;
+}
+switch (pchoice1) //switch for display the selected items
+{
+case 1:
+	System.out.println("\t\t--------Your Order---------\n");
+	System.out.println("NAME : "+name+"\n");
+	System.out.println(""+quantity+" zinger burger\n");
+	System.out.println("\nYour Total Bill is"+choice+"\nYour Order Will be delivered in 10 Minutes\n");
+	System.out.println("\nThank you For Ordering \n");
+break;
+case 2:
+	System.out.println("\t\t--------Your Order---------\n");
+	System.out.println("NAME : "+name+"\n");
+	System.out.println(""+quantity+" chicken burger\n");
+	System.out.println("\nYour Total Bill is"+choice+"\nYour Order Will be delivered in 10 Minutes\n");
+	System.out.println("\nThank you For Ordering \n");
+break;
+case 3:
+	System.out.println("\t\t--------Your Order---------\n");
+	System.out.println("NAME : "+name+"\n");
+	System.out.println(""+quantity+" beef burger\n");
+	System.out.println("\nYour Total Bill is"+choice+"\nYour Order Will be delivered in 10 Minutes\n");
+	System.out.println("\nThank you For Ordering\n");
+break;
+}
+}
+System.out.println("Would you like to order anything else? Y / N: \n 1 for yes \n 0 for no");
+gotostart= myObj.nextInt(); 
+if(gotostart==1) 
+{
+	Order o=new Order();
+ o.orrder(); 
+}
+	System.out.println("THANKS FOR ORDERING!");
+}
+}
+
+CLASS SANDWICH
+package project;
+
+import java.util.Scanner;
+
+public class Sandwich extends Order
+{
+	protected String name; //customer name
+	 int gotostart; //for option
+	int choice,pchoice,pchoice1, quantity; //for item choice and quantity
+public void sandwich()
+{
+	Scanner myObj = new Scanner(System.in);
+		System.out.println("Please Enter Your Name: ");
+		name= myObj.nextLine(); //input name of customer
+	choice=0;
+	System.out.println("\n1 club sandwich Rs.240\n\n");
+	System.out.println("2 chicken crispy sandwich Rs.160\n\n");
+	System.out.println("3 extreme veg sandwich Rs.100\n\n");
+	System.out.println("\nPlease Enter which Sandwich you would like to have?:");
+
+	pchoice1= myObj.nextInt(); //selection of flavor
+if(pchoice1>=1 && pchoice1<=3) //if condition use for choose material or item size
+{
+	System.out.println("\nPlease Enter Quantity: ");
+	quantity= myObj.nextInt(); //selection of quantity
+switch(pchoice1) //switch statement for choice of different quantity
+{
+case 1: choice = 240*quantity;
+break;
+case 2: choice = 160*quantity;
+break;
+case 3: choice = 100*quantity;
+break;
+}
+switch (pchoice1) //switch for display the selected items
+{
+case 1:
+	System.out.println("\t\t--------Your Order---------\n");
+	System.out.println("NAME : "+name+"\n");
+	System.out.println(""+quantity+" club sandwich\n");
+	System.out.println("\nYour Total Bill is"+choice+"\nYour Order Will be delivered in 10 Minutes\n");
+	System.out.println("\nThank you For Ordering \n");
+break;
+case 2:
+	System.out.println("\t\t--------Your Order---------\n");
+	System.out.println("NAME : "+name+"\n");
+	System.out.println(""+quantity+" chicken crispy sandwich\n");
+	System.out.println("\nYour Total Bill is"+choice+"\nYour Order Will be delivered in 10 Minutes\n");
+	System.out.println("\nThank you For Ordering \n");
+break;
+case 3:
+	System.out.println("\t\t--------Your Order---------\n");
+	System.out.println("NAME : "+name+"\n");
+	System.out.println(""+quantity+" extreme veg sandwich\n");
+	System.out.println("\nYour Total Bill is"+choice+"\nYour Order Will be delivered in 10 Minutes\n");
+	System.out.println("\nThank you For Ordering \n");
+break;
+}
+}
+System.out.println("Would you like to order anything else? Y / N: \n 1 for yes \n 0 for no");
+gotostart= myObj.nextInt(); 
+if(gotostart==1) 
+{
+	Order o=new Order();
+ o.orrder(); 
+}
+	System.out.println("THANKS FOR ORDERING!");
+}
+}
+
+CLASS ROLL
+package project;
+
+import java.util.Scanner;
+
+public class Rolls extends Order
+{
+	protected String name; //customer name
+	int choice,pchoice,pchoice1, quantity; //for item choice and quantity
+public void rolls()
+{
+	Scanner myObj = new Scanner(System.in);
+		System.out.println("Please Enter Your Name: ");
+		name= myObj.nextLine(); //input name of customer
+	choice=0;
+	System.out.println("\n1 chicken chatni roll Rs.150\n\n");
+	System.out.println("2 chicken mayo roll Rs.100\n\n");
+
+	System.out.println("3 veg roll with fries Rs.120\n\n");
+	System.out.println("\nPlease Enter which you would like to have?: ");
+	pchoice1= myObj.nextInt();
+//selection of flavour
+if(pchoice1>=1 && pchoice1<=3) //if condition use for choice material or item size
+{
+	System.out.println("\nHow Much Rolls Do you want: ");
+	quantity= myObj.nextInt(); //selection of quantity
+switch(pchoice1) //switch statement for choice of different quantity
+{
+case 1: choice = 150*quantity;
+break;
+case 2: choice = 100*quantity;
+break;
+case 3: choice = 120*quantity;
+break;
+}
+switch (pchoice1) //switch for display the selected items
+{
+case 1:
+	System.out.println("\t\t--------Your Order---------\n");
+	System.out.println("NAME : "+name+"\n");
+	System.out.println(""+quantity+" chicken chatni roll\n");
+	System.out.println("\nYour Total Bill is"+choice+"\nYour Order Will be delivered in 10 Minutes\n");
+	System.out.println("\nThank you For Ordering \n");
+break;
+case 2:
+	System.out.println("\t\t--------Your Order---------\n");
+	System.out.println("NAME : "+name+"\n");
+	System.out.println(""+quantity+" chicken mayo roll\n");
+	System.out.println("\nYour Total Bill is"+choice+"\nYour Order Will be delivered in 10 Minutes\n");
+	System.out.println("\nThank you For Ordering \n");
+break;
+case 3:
+	System.out.println("\t\t--------Your Order---------\n");
+	System.out.println("NAME : "+name+"\n");
+	System.out.println(""+quantity+" veg roll with fries\n");
+	System.out.println("\nYour Total Bill is"+choice+"\nYour Order Will be delivered in 10 Minutes\n");
+	System.out.println("\nThank you For Ordering \n");
+break;
+}
+}
+System.out.println("Would you like to order anything else? Y / N: \n 1 for yes \n 0 for no");
+int gotostart= myObj.nextInt(); 
+if(gotostart==1) 
+{
+	Order o=new Order();
+ o.orrder(); 
+}
+	System.out.println("THANKS FOR ORDERING!");
+}
+}
+
+CLASS BIRYANI
+package project;
+
+import java.util.Scanner;
+
+public class Biryani extends Order
+{
+	protected String name; //customer name
+	 int gotostart; //for option
+	int choice,pchoice,pchoice1, quantity; //for item choice and quantity
+public void biryani()
+{
+	Scanner myObj = new Scanner(System.in);
+		System.out.println("Please Enter Your Name: ");
+		name= myObj.nextLine(); //input name of customer
+	choice=0;
+	System.out.println("\n1 chicken biryani Rs.160\n\n");
+	System.out.println("2 pawn biryani Rs.220\n\n");
+	System.out.println("3 beef biryani Rs.140\n\n");
+	System.out.println("\nPlease Enter which Biryani you would like to have?:");
+	pchoice1= myObj.nextInt(); //selection of flavor
+if(pchoice1>=1 && pchoice1<=3) //if condition use for choose material or item size
+{
+
+	System.out.println("\nPlease Enter Quantity: ");
+	quantity= myObj.nextInt(); //selection of quantity
+switch(pchoice1) //switch statement for choice of different quantity
+{
+case 1: choice = 160*quantity;
+break;
+case 2: choice = 220*quantity;
+break;
+case 3: choice = 140*quantity;
+break;
+}
+switch (pchoice1) //switch for display the selected items
+{
+case 1:
+	System.out.println("\t\t--------Your Order---------\n");
+	System.out.println("NAME : "+name+"\n");
+	System.out.println(""+quantity+" chicken biryani\n");
+	System.out.println("\nYour Total Bill is"+choice+"\nYour Order Will be delivered in 10 Minutes\n");
+	System.out.println("\nThank you For Ordering \n");
+break;
+case 2:
+	System.out.println("\t\t--------Your Order---------\n");
+	System.out.println("NAME : "+name+"\n");
+	System.out.println(""+quantity+" pawn biryani\n");
+	System.out.println("\nYour Total Bill is"+choice+"\nYour Order Will be delivered in 10 Minutes\n");
+	System.out.println("\nThank you For Ordering \n");
+break;
+case 3:
+	System.out.println("\t\t--------Your Order---------\n");
+	System.out.println("NAME : "+name+"\n");
+	System.out.println(""+quantity+" beef biryani\n");
+	System.out.println("\nYour Total Bill is"+choice+"\nYour Order Will be delivered in 10 Minutes\n");
+	System.out.println("\nThank you For Ordering \n");
+break;
+}
+}
+System.out.println("Would you like to order anything else? Y / N: \n 1 for yes \n 0 for no");
+int gotostart= myObj.nextInt(); 
+if(gotostart==1) 
+{
+	Order o=new Order();
+ o.orrder(); 
+}
+	System.out.println("THANKS FOR ORDERING!");
+}
+}
+
+
+OUTPUT
+			----------*CAFETERIA ORDER MANAGEMENT SYSTEM*-----------
+
+
+			-----------------*GROUP MEMBERS*--------------
+
+
+			------------*NOOR-UL-AIN MUMTAZ (21)*-----------
+
+
+			--------------*ZUNAIRA ZAFAR (035)*-----------
+
+
+			----------------*ANAM BIBI (007)*-----------
+
+
+Hello     
+
+What would you like to order?
+
+
+				--------Menu--------
+
+
+1) Pizzas
+
+2) Burgers
+
+3) Sandwich
+
+4) Rolls
+
+5) Biryani
+
+
+
+Please Enter your Choice: 
+1
+Please Enter Your Name: 
+NOOR
+
+1) Chicken Fazita
+
+2) Chicken Bar BQ
+
+3) Peri Peri
+
+4) Creamy Max
+
+
+Please Enter which Flavour would you like to have?:
+2
+
+1) Small Rs.250
+2) Regular Rs.500
+3) Large Rs.900
+
+
+Choose Size Please:
+2
+
+Please Enter Quantity: 
+1
+		--------Your Order---------
+
+NAME : NOOR
+
+1 chicken Bar BQ
+
+
+Your Total Bill is 500
+Your Order Will be delivered in 10 Minutes
+
+
+Thank you For Ordering 
+
+Would you like to order anything else? Y / N: 
+ 1 for yes 
+ 0 for no
+1
+Hello     
+
+What would you like to order?
+
+
+				--------Menu--------
+
+
+1) Pizzas
+
+2) Burgers
+
+3) Sandwich
+
+4) Rolls
+
+5) Biryani
+
+
+
+Please Enter your Choice: 
+5
+Please Enter Your Name: 
+ANAM
+
+1 chicken biryani Rs.160
+
+
+2 pawn biryani Rs.220
+
+
+3 beef biryani Rs.140
+
+
+
+Please Enter which Biryani you would like to have?:
+1
+
+Please Enter Quantity: 
+2
+		--------Your Order---------
+
+NAME : ANAM
+
+2 chicken biryani
+
+
+Your Total Bill is320
+Your Order Will be delivered in 10 Minutes
+
+
+Thank you For Ordering 
+
+Would you like to order anything else? Y / N: 
+ 1 for yes 
+ 0 for no
+1
+Hello     
+
+What would you like to order?
+
+
+				--------Menu--------
+
+
+1) Pizzas
+
+2) Burgers
+
+3) Sandwich
+
+4) Rolls
+
+5) Biryani
+
+
+
+Please Enter your Choice: 
+2
+Please Enter Your Name: 
+ZUNAIRA
+
+1 zinger burger Rs.180
+
+
+2 chicken burger Rs.150
+
+
+3 beef burger Rs.160
+
+
+
+Please Enter which Burger you would like to have?: 
+2
+
+Please Enter Quantity: 
+3
+		--------Your Order---------
+
+NAME : ZUNAIRA
+
+3 chicken burger
+
+
+Your Total Bill is450
+Your Order Will be delivered in 10 Minutes
+
+
+Thank you For Ordering 
+
+Would you like to order anything else? Y / N: 
+ 1 for yes 
+ 0 for no
+0
+THANKS FOR ORDERING!
+THANKS FOR ORDERING!
+THANKS FOR ORDERING!
